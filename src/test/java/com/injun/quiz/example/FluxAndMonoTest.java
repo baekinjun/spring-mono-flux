@@ -177,7 +177,7 @@ public class FluxAndMonoTest {
     void monoEmptyTest() {
         //이것은 리스트 기본 만드는것
         Mono<String> result = Mono.empty();
-        assertThat(result, is(equalTo("")));
+        assertThat(result.block(), is(equalTo(null)));
     }
 
     @DisplayName("mono just() sample")
