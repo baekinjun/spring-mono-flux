@@ -6,18 +6,13 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Signal;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -177,7 +172,7 @@ public class FluxAndMonoTest {
     void monoEmptyTest() {
         //이것은 리스트 기본 만드는것
         Mono<String> result = Mono.empty();
-        assertThat(result.block(), is(equalTo(null)));
+        assertThat(result.block(), is(equalTo(nullValue())));
     }
 
     @DisplayName("mono just() sample")
