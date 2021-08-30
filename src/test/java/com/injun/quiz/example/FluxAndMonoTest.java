@@ -6,8 +6,11 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
+import com.injun.quiz.config.CustomException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
@@ -20,6 +23,18 @@ import java.util.stream.Stream;
 //읽어보기 플럭스 모노 둘다 읽어보기!
 
 public class FluxAndMonoTest {
+    @Mock
+    CustomException customExceptionMono;
+
+    @Mock
+    CustomException customExceptionFlux;
+
+    @BeforeEach
+    void setUp() {
+        customExceptionMono = new CustomException("Mono");
+        customExceptionFlux = new CustomException("Flux");
+    }
+
     //flux 는 여러개 복수형  mono 는 단수형
     @DisplayName("Flux just() sample")
     @Test
@@ -190,5 +205,16 @@ public class FluxAndMonoTest {
                 .map(items -> items.toUpperCase())
                 .subscribe(System.out::println);
 
+    }
+
+    @DisplayName("Mono Flux error() sample")
+    @Test
+    void errorTest() {
+        Mono.error(customExceptionMono)
+                .doOnError(e -> System.out.println("Mono inside doOnError"))
+                .subscribe(System.out::println);
+        Flux.error(customExceptionFlux)
+                .doOnError(e -> System.out.println("flux inside doOnError"))
+                .subscribe(System.out::println);
     }
 }
