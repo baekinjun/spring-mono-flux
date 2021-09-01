@@ -1,5 +1,5 @@
 package com.injun.quiz.controller;
-
+/*
 import com.injun.quiz.domain.Producers;
 import com.injun.quiz.service.KafkaSender;
 import lombok.RequiredArgsConstructor;
@@ -35,3 +35,4 @@ public class KafkaController {
     }
 
 }
+*/

@@ -182,13 +182,13 @@ public class FluxAndMonoTest {
         assertThat(result[0].intValue(), is(1));
     }
 
-    @DisplayName("mono empty sample")
-    @Test
-    void monoEmptyTest() {
-        //이것은 리스트 기본 만드는것
-        Mono<String> result = Mono.empty();
-        assertThat(result.block(), is(equalTo(nullValue())));
-    }
+//    @DisplayName("mono empty sample")
+//    @Test
+//    void monoEmptyTest() {
+//        //이것은 리스트 기본 만드는것
+//        Mono<String> result = Mono.empty();
+//        assertThat(result.block(), is(equalTo(nullValue())));
+//    }
 
     @DisplayName("mono just() sample")
     @Test
