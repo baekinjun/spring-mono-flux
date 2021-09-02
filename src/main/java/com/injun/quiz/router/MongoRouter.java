@@ -33,9 +33,9 @@ public class MongoRouter {
             Pageable page = PageRequest.of(0, 5);
             db.findRegexByAlias("happy-john").collectList().subscribe(System.out::println);
             db.findByAliasWithPage("john", page).collectList().subscribe(System.out::println);
-            User john = new User("john", "happy-john");
+            User john = new User("john", "happy-john", "john", "john@test.com");
             db.insert(john).subscribe(System.out::println);
-            User tom = new User("tom", "happy-tom");
+            User tom = new User("tom", "happy-tom", "tom", "tom@test.com");
             db.insert(tom).subscribe(System.out::println);
 
             Mono<ServerResponse> res = ServerResponse.ok()

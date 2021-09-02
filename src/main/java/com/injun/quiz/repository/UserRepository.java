@@ -19,7 +19,7 @@ public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
     Flux<User> findAll();
 
-    Mono<User> findByUserid();
+    Mono<User> findByid();
 
     //rdbms 쿼리랑 모양이 다르다.
     @Query("{'alias' : {$regex: ?0}}")
